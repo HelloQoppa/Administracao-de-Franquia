@@ -1,0 +1,24 @@
+image: maven:latest
+
+cache:
+ paths:
+ - target/
+ 
+build:
+ stage: build
+ script:
+ - mvn -f pom.xml compile
+ 
+test:
+ stage: test
+ script:
+ - mvn -f pom.xml test
+ 
+deploy:
+ stage: deploy
+ script:
+ - mvn -f pom.xml deploy
+ 
+ only:
+ - master
+
